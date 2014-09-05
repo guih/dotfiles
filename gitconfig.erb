@@ -1,20 +1,31 @@
 [user]
-	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
-	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+	name = guih
+	email = guih.matsumoto@gmail.com
 [alias]
 	co = checkout
 [color]
 	diff = auto
 	status = auto
 	branch = auto
+ 	ui = true
 [core]
-	excludesfile = <%= ENV['HOME'] %>/.gitignore
-	editor = mate -w
+	excludesfile = /opt/boxen/config/git/gitignore
+	editor = vim
 	autocrlf = input
 [apply]
 	whitespace = nowarn
 [format]
 	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
-	user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
-	token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
+	user = guih
+	token = 8e3c45e83a2e4813b2be41284163726b253a0fba
+[credential]
+	helper = /opt/boxen/bin/boxen-git-credential
+[push]
+  default = simple
+[pull]
+  default = simple
+
+[hub]
+protocol = https
+
