@@ -1,0 +1,15 @@
+'rdstation':
+  'title': 'rdstation'
+  'paths': [
+    '/Users/mats/src/rdstation'
+  ]
+'gdexporter':
+  'title': 'gdexporter'
+  'paths': [
+    '/Users/mats/src/gooddata/rdstation-gooddata-data-exporter'
+  ]
+'gooderdata':
+  'title': 'gooderdata'
+  'paths': [
+    '/Users/mats/src/gooddata/gooder_data'
+  ]

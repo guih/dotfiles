@@ -1,0 +1,40 @@
+'editor':
+  'showIndentGuide': true
+'core':
+  'disabledPackages': [
+    'test-status'
+    'atom-color-highlight'
+    'color-picker'
+    'file-icons'
+  ]
+  'useReactEditor': true
+  'projectHome': '/Users/mats/src'
+  'themes': [
+    'atom-dark-ui'
+    'seti-syntax'
+  ]
+'exception-reporting':
+  'userId': '052b0fb2-0a82-c642-688f-f718bd461048'
+'release-notes':
+  'viewedVersion': '0.94.0'
+'welcome':
+  'showOnStartup': false
+'metrics':
+  'userId': 'c48e722b9347b9ce44074a78f6a9ccb9c0315e52'
+'whitespace':
+  'ensureSingleTrailingNewline': true
+'test-status':
+  'spec/**/*_spec': {}
+'highlight-selected':
+  'onlyHighlightWholeWords': true
+'fuzzy-finder':
+  'ignoredNames': [
+    'migrate spec/factories'
+  ]
+'circle-ci':
+  'apiToken': '91d4349d2544d0cf7fe09f289c7bce6b3a2d76cd'
+'linter-rubocop':
+  'rubocopExecutablePath': '/opt/boxen/rbenv/shims/rubocop'
+'linter':
+  'lintOnEditorFocus': false
+  'lintOnChange': false
