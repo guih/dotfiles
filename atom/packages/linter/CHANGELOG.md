@@ -1,3 +1,21 @@
+# v0.5.18
+
+### Bug Fixes
+* Compatibility with [git-diff][gitdiff] (See [#121][121], [#202][202])
+
+[121]: https://github.com/AtomLinter/Linter/issues/121
+[202]: https://github.com/AtomLinter/Linter/issues/202
+[gitdiff]: https://atom.io/packages/git-diff
+
+# v0.5.17
+
+### Bug Fixes
+* Fix regression for multiple linters in one file (See [#193][193],
+  [#194][194])
+
+[193]: https://github.com/AtomLinter/Linter/issues/193
+[194]: https://github.com/AtomLinter/Linter/pull/194
+
 # v0.5.16
 
 ### Bug Fixes

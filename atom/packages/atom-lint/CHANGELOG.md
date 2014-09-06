@@ -2,6 +2,14 @@
 
 ## Development
 
+## v0.19.2
+
+* Fix an issue where no information is displayed on the status bar when a new editor tab is opened on Atom 0.125.0. ([@yujinakayama])
+
+## v0.19.1
+
+* Fix an error when environment variable `PATH` is not set. ([@yujinakayama])
+
 ## v0.19.0
 
 * [#52](https://github.com/yujinakayama/atom-lint/issues/52): Redesign handling of environment variables to handle 100% CPU usage issue. ([@yujinakayama])

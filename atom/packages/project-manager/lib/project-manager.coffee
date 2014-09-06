@@ -19,6 +19,7 @@ module.exports =
           if error
             console.log "Error: Could not create #{@file()} - #{error}"
       else
+        @subscribeToProjectsFile()
         @loadSettings()
 
     atom.workspaceView.command 'project-manager:save-project', =>
@@ -26,7 +27,7 @@ module.exports =
     atom.workspaceView.command 'project-manager:toggle', =>
       @createProjectManagerView(state).toggle(@)
     atom.workspaceView.command 'project-manager:edit-projects', =>
-      @editProjects()
+      atom.workspaceView.open @file()
     atom.workspaceView.command 'project-manager:reload-project-settings', =>
       @loadSettings()
 
@@ -35,6 +36,7 @@ module.exports =
       previous = if obj.previous? then obj.previous else newValue
       unless newValue is previous
         @updateFile()
+        @subscribeToProjectsFile()
 
   file: (update = false) ->
     @filepath = null if update
@@ -58,6 +60,11 @@ module.exports =
           if error
             console.log "Error: Could not create #{@file()} - #{error}"
 
+  subscribeToProjectsFile: ->
+    @fileWatcher.close() if @fileWatcher?
+    @fileWatcher = fs.watch @file(), (event, filename) =>
+      @loadSettings()
+
   loadSettings: ->
     CSON = require 'season'
     CSON.readFile @file(), (error, data) =>
@@ -70,15 +77,15 @@ module.exports =
               break
 
   enableSettings: (settings) ->
-    for setting, value of settings
-      atom.workspace.eachEditor (editor) ->
-        if typeof value is 'string' or typeof value is 'number'
-          editor[setting](value)
-        else
-          for filesetting, filevalue of value
-            if editor.getGrammar() is setting
-              edit[filesetting](filevalue)
+    _ = require 'underscore-plus'
 
+    projectSettings = {}
+    for setting, value of settings
+      _.setValueForKeyPath(projectSettings, setting, value)
+      atom.config.settings = _.deepExtend(
+        projectSettings,
+        atom.config.settings)
+    atom.config.emit('updated')
 
   addProject: (project) ->
     CSON = require 'season'
@@ -86,21 +93,15 @@ module.exports =
     projects[project.title] = project
     CSON.writeFileSync(@file(), projects)
 
-  openProject: ({title, paths}) ->
+  openProject: ({title, paths, devMode}) ->
     atom.open options =
       pathsToOpen: paths
+      devMode: devMode
 
     if atom.config.get('project-manager.closeCurrent')
       setTimeout ->
         atom.close()
-      , 100
-
-
-  editProjects: ->
-    config =
-      title: 'Config'
-      paths: [@file()]
-    @openProject(config)
+      , 200
 
   createProjectManagerView: (state) ->
     unless @projectManagerView?

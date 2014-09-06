@@ -1,5 +1,6 @@
 'editor':
   'showIndentGuide': true
+  'invisibles': {}
 'core':
   'disabledPackages': [
     'test-status'
@@ -38,3 +39,5 @@
 'linter':
   'lintOnEditorFocus': false
   'lintOnChange': false
+  'showHighlighting': false
+'atom-lint': {}
