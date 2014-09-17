@@ -7,6 +7,12 @@
     'atom-color-highlight'
     'color-picker'
     'file-icons'
+    'linter'
+    'linter-rubocop'
+    'linter-pylint'
+    'linter-jshint'
+    'linter-erb'
+    'linter-coffeelint'
   ]
   'useReactEditor': true
   'projectHome': '/Users/mats/src'
@@ -41,3 +47,5 @@
   'lintOnChange': false
   'showHighlighting': false
 'atom-lint': {}
+'linter-jshint': {}
+'linter-coffeelint': {}
